@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59865AA021B2E32800F0EDEF /* CodableFund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865A9F21B2E32800F0EDEF /* CodableFund.swift */; };
+		59865AA321B2E8A200F0EDEF /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865AA221B2E8A200F0EDEF /* APIWorker.swift */; };
+		59865AAE21B2F79100F0EDEF /* FundFilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865AAD21B2F79100F0EDEF /* FundFilterOptions.swift */; };
+		59865AB021B2FB6200F0EDEF /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865AAF21B2FB6200F0EDEF /* FilterWorker.swift */; };
+		59865AB221B32C8F00F0EDEF /* FilterWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865AB121B32C8F00F0EDEF /* FilterWorkerTest.swift */; };
 		A279EF9B21B1667600E39E1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A279EF9A21B1667600E39E1F /* AppDelegate.swift */; };
 		A279EF9D21B1667600E39E1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A279EF9C21B1667600E39E1F /* ViewController.swift */; };
 		A279EFA021B1667600E39E1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A279EF9E21B1667600E39E1F /* Main.storyboard */; };
@@ -48,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59865A9F21B2E32800F0EDEF /* CodableFund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFund.swift; sourceTree = "<group>"; };
+		59865AA221B2E8A200F0EDEF /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
+		59865AAD21B2F79100F0EDEF /* FundFilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundFilterOptions.swift; sourceTree = "<group>"; };
+		59865AAF21B2FB6200F0EDEF /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
+		59865AB121B32C8F00F0EDEF /* FilterWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorkerTest.swift; sourceTree = "<group>"; };
 		A279EF9721B1667600E39E1F /* Teste-iOS-BTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teste-iOS-BTG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A279EF9A21B1667600E39E1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A279EF9C21B1667600E39E1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +112,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59865A9D21B2E2E600F0EDEF /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				59865AA621B2EBDB00F0EDEF /* View Controller */,
+				59865AA521B2EBB200F0EDEF /* Presenter */,
+				59865AA421B2EB7600F0EDEF /* Interactor */,
+				59865AA121B2E89300F0EDEF /* Worker */,
+				59865A9E21B2E2F000F0EDEF /* Model */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		59865A9E21B2E2F000F0EDEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59865A9F21B2E32800F0EDEF /* CodableFund.swift */,
+				59865AAD21B2F79100F0EDEF /* FundFilterOptions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59865AA121B2E89300F0EDEF /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				59865AA221B2E8A200F0EDEF /* APIWorker.swift */,
+				59865AAF21B2FB6200F0EDEF /* FilterWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		59865AA421B2EB7600F0EDEF /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		59865AA521B2EBB200F0EDEF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		59865AA621B2EBDB00F0EDEF /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		59865AA821B2ECEA00F0EDEF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A279EFC821B1672300E39E1F /* Fonts */,
+				A279EF9E21B1667600E39E1F /* Main.storyboard */,
+				A279EFA121B1667800E39E1F /* Assets.xcassets */,
+				A279EFA321B1667800E39E1F /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A279EF8E21B1667600E39E1F = {
 			isa = PBXGroup;
 			children = (
@@ -125,14 +197,12 @@
 		A279EF9921B1667600E39E1F /* Teste-iOS-BTG */ = {
 			isa = PBXGroup;
 			children = (
+				59865AA821B2ECEA00F0EDEF /* Supporting Files */,
+				59865A9D21B2E2E600F0EDEF /* Scene */,
 				A279EFE321B1683F00E39E1F /* Colors.swift */,
 				A279EF9A21B1667600E39E1F /* AppDelegate.swift */,
 				A279EF9C21B1667600E39E1F /* ViewController.swift */,
-				A279EF9E21B1667600E39E1F /* Main.storyboard */,
-				A279EFA121B1667800E39E1F /* Assets.xcassets */,
-				A279EFA321B1667800E39E1F /* LaunchScreen.storyboard */,
 				A279EFA621B1667800E39E1F /* Info.plist */,
-				A279EFC821B1672300E39E1F /* Fonts */,
 			);
 			path = "Teste-iOS-BTG";
 			sourceTree = "<group>";
@@ -141,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				A279EFAF21B1667800E39E1F /* Teste_iOS_BTGTests.swift */,
+				59865AB121B32C8F00F0EDEF /* FilterWorkerTest.swift */,
 				A279EFB121B1667800E39E1F /* Info.plist */,
 			);
 			path = "Teste-iOS-BTGTests";
@@ -321,7 +392,11 @@
 			files = (
 				A279EF9D21B1667600E39E1F /* ViewController.swift in Sources */,
 				A279EFE421B1683F00E39E1F /* Colors.swift in Sources */,
+				59865AA021B2E32800F0EDEF /* CodableFund.swift in Sources */,
+				59865AAE21B2F79100F0EDEF /* FundFilterOptions.swift in Sources */,
+				59865AB021B2FB6200F0EDEF /* FilterWorker.swift in Sources */,
 				A279EF9B21B1667600E39E1F /* AppDelegate.swift in Sources */,
+				59865AA321B2E8A200F0EDEF /* APIWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A279EFB021B1667800E39E1F /* Teste_iOS_BTGTests.swift in Sources */,
+				59865AB221B32C8F00F0EDEF /* FilterWorkerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +610,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FU2YTD6J36;
+				DEVELOPMENT_TEAM = 524D3B9S8F;
 				INFOPLIST_FILE = "Teste-iOS-BTGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -555,7 +631,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FU2YTD6J36;
+				DEVELOPMENT_TEAM = 524D3B9S8F;
 				INFOPLIST_FILE = "Teste-iOS-BTGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -575,7 +651,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FU2YTD6J36;
+				DEVELOPMENT_TEAM = 524D3B9S8F;
 				INFOPLIST_FILE = "Teste-iOS-BTGUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,7 +671,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FU2YTD6J36;
+				DEVELOPMENT_TEAM = 524D3B9S8F;
 				INFOPLIST_FILE = "Teste-iOS-BTGUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

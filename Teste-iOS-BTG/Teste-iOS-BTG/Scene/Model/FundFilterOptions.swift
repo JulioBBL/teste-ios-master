@@ -8,6 +8,19 @@
 
 import Foundation
 
+enum RiskLevel: String {
+    case conservador = "CONSERVADOR"
+    case moderado = "MODERADO"
+    case sofisticado = "SOFISTICADO"
+}
+
+enum FundCategory: String {
+    case rendaFixa     = "Renda Fixa"
+    case multimercados = "Multimercados"
+    case acoes         = "Ações"
+    case cambial       = "Cambial"
+}
+
 enum ApplicationInterval: Double {
     case upto0    =       0.0
     case upto100  =     100.0
@@ -58,8 +71,9 @@ enum RescueInterval: String {
     case interval29 = "D+181"
 }
 
-struct FundFilter {
-    var category: RiskLevel?
+struct FundFilterOptions {
+    var risk: RiskLevel?
+    var category: FundCategory?
     var minimumApplication: ApplicationInterval?
     var rescueInterval: RescueInterval?
 }
