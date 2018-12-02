@@ -9,12 +9,20 @@
 import Foundation
 
 public class FilterWorker {
+    
+    /// Filters funds according to the definitions privided.
+    ///
+    /// - Parameters:
+    ///   - funds: array of CodableFund to be filtered.
+    ///   - filter: definitions after which the funds will be filtered.
+    /// - Returns: a CodableFund array comprised only of funds that comply to the options provided.
     func filterFunds(_ funds: [CodableFund], by filter: FundFilterOptions) -> [CodableFund] {
         var filteredFunds = funds
         
         if let risk = filter.risk {
             filteredFunds = filteredFunds.filter({ (fund) -> Bool in
-                return fund.riskName == risk.rawValue
+                guard let fundRisk = RiskLevel(rawValue: fund.riskName) else {return false}
+                return risk.contains(fundRisk)
             })
         }
         
@@ -39,6 +47,12 @@ public class FilterWorker {
         return filteredFunds
     }
     
+    /// Filter funds by the text comprised in it's name
+    ///
+    /// - Parameters:
+    ///   - funds: array of CodableFund to be filtered.
+    ///   - text: text that must be present on the fund's name.
+    /// - Returns: a CodableFund array comprised only of funds that have the specified text in the name.
     func filterFunds(_ funds: [CodableFund], byText text: String) -> [CodableFund] {
         return funds.filter({ (fund) -> Bool in
             return fund.name.contains(text)

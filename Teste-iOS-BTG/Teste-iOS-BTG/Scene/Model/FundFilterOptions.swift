@@ -72,7 +72,7 @@ enum RescueInterval: String {
 }
 
 struct FundFilterOptions {
-    var risk: RiskLevel?
+    var risk: [RiskLevel]?
     var category: FundCategory?
     var minimumApplication: ApplicationInterval?
     var rescueInterval: RescueInterval?

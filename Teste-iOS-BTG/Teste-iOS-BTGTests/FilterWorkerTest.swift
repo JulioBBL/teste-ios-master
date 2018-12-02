@@ -38,7 +38,7 @@ class FilterWorkerTest: XCTestCase {
     
     func testFilterByRisk() {
         // test risk level "conservador"
-        self.filter = FundFilterOptions(risk: RiskLevel.conservador, category: nil, minimumApplication: nil, rescueInterval: nil)
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador], category: nil, minimumApplication: nil, rescueInterval: nil)
         
         var filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -47,7 +47,7 @@ class FilterWorkerTest: XCTestCase {
         XCTAssertEqual(filtered[1].id, 2)
         
         // test risk level "moderado"
-        self.filter = FundFilterOptions(risk: RiskLevel.moderado, category: nil, minimumApplication: nil, rescueInterval: nil)
+        self.filter = FundFilterOptions(risk: [RiskLevel.moderado], category: nil, minimumApplication: nil, rescueInterval: nil)
         
         filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -55,14 +55,60 @@ class FilterWorkerTest: XCTestCase {
         XCTAssertEqual(filtered[0].id, 3)
         XCTAssertEqual(filtered[1].id, 4)
         
-        // test risk level "moderado"
-        self.filter = FundFilterOptions(risk: RiskLevel.sofisticado, category: nil, minimumApplication: nil, rescueInterval: nil)
+        // test risk level "sofisticado"
+        self.filter = FundFilterOptions(risk: [RiskLevel.sofisticado], category: nil, minimumApplication: nil, rescueInterval: nil)
         
         filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
         XCTAssertEqual(filtered.count, 2)
         XCTAssertEqual(filtered[0].id, 5)
         XCTAssertEqual(filtered[1].id, 6)
+        
+        // test risk level "conservador" and "moderado"
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador, RiskLevel.moderado], category: nil, minimumApplication: nil, rescueInterval: nil)
+        
+        filtered = self.worker.filterFunds(self.funds, by: self.filter)
+        
+        XCTAssertEqual(filtered.count, 4)
+        XCTAssertEqual(filtered[0].id, 1)
+        XCTAssertEqual(filtered[1].id, 2)
+        XCTAssertEqual(filtered[2].id, 3)
+        XCTAssertEqual(filtered[3].id, 4)
+        
+        // test risk level "conservador" and "sofisticado"
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador, RiskLevel.sofisticado], category: nil, minimumApplication: nil, rescueInterval: nil)
+        
+        filtered = self.worker.filterFunds(self.funds, by: self.filter)
+        
+        XCTAssertEqual(filtered.count, 4)
+        XCTAssertEqual(filtered[0].id, 1)
+        XCTAssertEqual(filtered[1].id, 2)
+        XCTAssertEqual(filtered[2].id, 5)
+        XCTAssertEqual(filtered[3].id, 6)
+        
+        // test risk level "moderado" and "sofisticado"
+        self.filter = FundFilterOptions(risk: [RiskLevel.moderado, RiskLevel.sofisticado], category: nil, minimumApplication: nil, rescueInterval: nil)
+        
+        filtered = self.worker.filterFunds(self.funds, by: self.filter)
+        
+        XCTAssertEqual(filtered.count, 4)
+        XCTAssertEqual(filtered[0].id, 3)
+        XCTAssertEqual(filtered[1].id, 4)
+        XCTAssertEqual(filtered[2].id, 5)
+        XCTAssertEqual(filtered[3].id, 6)
+        
+        // test every risk level
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador, RiskLevel.moderado, RiskLevel.sofisticado], category: nil, minimumApplication: nil, rescueInterval: nil)
+        
+        filtered = self.worker.filterFunds(self.funds, by: self.filter)
+        
+        XCTAssertEqual(filtered.count, 6)
+        XCTAssertEqual(filtered[0].id, 1)
+        XCTAssertEqual(filtered[1].id, 2)
+        XCTAssertEqual(filtered[2].id, 3)
+        XCTAssertEqual(filtered[3].id, 4)
+        XCTAssertEqual(filtered[4].id, 5)
+        XCTAssertEqual(filtered[5].id, 6)
     }
     
     func testFilterByCategory() {
@@ -177,7 +223,7 @@ class FilterWorkerTest: XCTestCase {
     
     func testFilterByTwoFactors() {
         // test filter by risk and category
-        self.filter = FundFilterOptions(risk: RiskLevel.conservador, category: FundCategory.rendaFixa, minimumApplication: nil, rescueInterval: nil)
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador], category: FundCategory.rendaFixa, minimumApplication: nil, rescueInterval: nil)
         
         var filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -185,7 +231,7 @@ class FilterWorkerTest: XCTestCase {
         XCTAssertEqual(filtered[0].id, 1)
         
         // test filter by risk and minimum application value
-        self.filter = FundFilterOptions(risk: RiskLevel.moderado, category: nil, minimumApplication: ApplicationInterval.upto1k, rescueInterval: nil)
+        self.filter = FundFilterOptions(risk: [RiskLevel.moderado], category: nil, minimumApplication: ApplicationInterval.upto1k, rescueInterval: nil)
         
         filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -193,7 +239,7 @@ class FilterWorkerTest: XCTestCase {
         XCTAssertEqual(filtered[0].id, 3)
         
         // test filter by risk and rescue interval
-        self.filter = FundFilterOptions(risk: RiskLevel.moderado, category: nil, minimumApplication: nil, rescueInterval: RescueInterval.interval0)
+        self.filter = FundFilterOptions(risk: [RiskLevel.moderado], category: nil, minimumApplication: nil, rescueInterval: RescueInterval.interval0)
         
         filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -225,7 +271,7 @@ class FilterWorkerTest: XCTestCase {
     
     func testFilterByThreeFactors() {
         // test filter by risk, category and minimum application value
-        self.filter = FundFilterOptions(risk: RiskLevel.conservador, category: FundCategory.multimercados, minimumApplication: ApplicationInterval.upto25k, rescueInterval: nil)
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador], category: FundCategory.multimercados, minimumApplication: ApplicationInterval.upto25k, rescueInterval: nil)
         
         var filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -233,14 +279,14 @@ class FilterWorkerTest: XCTestCase {
         XCTAssertEqual(filtered[0].id, 2)
         
         // test filter by risk, category and rescue interval
-        self.filter = FundFilterOptions(risk: RiskLevel.sofisticado, category: FundCategory.rendaFixa, minimumApplication: nil, rescueInterval: RescueInterval.interval0)
+        self.filter = FundFilterOptions(risk: [RiskLevel.sofisticado], category: FundCategory.rendaFixa, minimumApplication: nil, rescueInterval: RescueInterval.interval0)
         
         filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
         XCTAssertEqual(filtered.count, 0)
         
         // test filter by risk, minimum application value and rescue interval
-        self.filter = FundFilterOptions(risk: RiskLevel.conservador, category: nil, minimumApplication: ApplicationInterval.upto3k, rescueInterval: RescueInterval.interval1)
+        self.filter = FundFilterOptions(risk: [RiskLevel.conservador], category: nil, minimumApplication: ApplicationInterval.upto3k, rescueInterval: RescueInterval.interval1)
         
         filtered = self.worker.filterFunds(self.funds, by: self.filter)
         
@@ -257,7 +303,7 @@ class FilterWorkerTest: XCTestCase {
     }
     
     func testFilterByAllFactors() {
-        self.filter = FundFilterOptions(risk: RiskLevel.moderado, category: FundCategory.cambial, minimumApplication: ApplicationInterval.upto10k, rescueInterval: RescueInterval.interval2)
+        self.filter = FundFilterOptions(risk: [RiskLevel.moderado], category: FundCategory.cambial, minimumApplication: ApplicationInterval.upto10k, rescueInterval: RescueInterval.interval2)
         
         var filtered = self.worker.filterFunds(self.funds, by: self.filter)
     
