@@ -13,4 +13,6 @@ extension UIColor {
     static let btg_orange = UIColor(r: 245.0, g: 125.0, b: 13.0)
     static let btg_red = UIColor(r: 185.0, g: 72.0, b: 74.0)
     
+    static let btg_gray = UIColor(r: 59.0, g: 71.0, b: 89.0)
+    static let btg_neonGreen = UIColor(r: 37.0, g: 191.0, b: 175.0)
 }

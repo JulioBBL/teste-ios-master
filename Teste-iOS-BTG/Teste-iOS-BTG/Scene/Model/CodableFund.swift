@@ -17,9 +17,7 @@ struct CodableFund: Codable, Equatable {
     }
     
     struct FundDetails: Codable {
-        var valueQuota: Double
         var rescueQuota: String
-        var dateQuota: String
         var categoryDescription: String
     }
     
@@ -44,7 +42,17 @@ struct CodableFund: Codable, Equatable {
     }
     
     public static func createFundForFilterTest(id: Int, name: String, risk: RiskLevel, category: FundCategory, minimumInvestiment: Double, rescueInterval: RescueInterval) -> CodableFund {
-        return CodableFund(id: id, name: name, minimumInitialInvestment: minimumInvestiment, riskName: risk.rawValue, netEquity: 0.0, beginDate: "", profitability: CodableFund.Profitability(month: 0.0, year: 0.0, twelveMonths: 0.0), detail: CodableFund.FundDetails(valueQuota: 0.0, rescueQuota: rescueInterval.rawValue, dateQuota: "", categoryDescription: category.rawValue))
+        return CodableFund(id: id,
+                           name: name,
+                           minimumInitialInvestment: minimumInvestiment,
+                           riskName: risk.rawValue,
+                           netEquity: 0.0,
+                           beginDate: "",
+                           profitability: CodableFund.Profitability(month: 0.0,
+                                                                    year: 0.0,
+                                                                    twelveMonths: 0.0),
+                           detail: CodableFund.FundDetails(rescueQuota: rescueInterval.rawValue,
+                                                           categoryDescription: category.rawValue))
     }
     
     static func == (lhs: CodableFund, rhs: CodableFund) -> Bool {

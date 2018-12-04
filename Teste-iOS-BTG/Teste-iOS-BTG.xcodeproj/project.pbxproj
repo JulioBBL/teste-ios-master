@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59056CB721B48D25002F56F1 /* FundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59056CB621B48D25002F56F1 /* FundTableViewController.swift */; };
+		59056CB921B48D3C002F56F1 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59056CB821B48D3C002F56F1 /* Presenter.swift */; };
+		59056CBB21B48D51002F56F1 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59056CBA21B48D51002F56F1 /* Interactor.swift */; };
+		59056CBD21B56B7D002F56F1 /* FormattedFund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59056CBC21B56B7D002F56F1 /* FormattedFund.swift */; };
+		59056CC121B59B6D002F56F1 /* FundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59056CC021B59B6D002F56F1 /* FundTableViewCell.swift */; };
+		593E905321B60BBA0057F8C9 /* PickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593E905221B60BBA0057F8C9 /* PickerTableViewController.swift */; };
 		59865AA021B2E32800F0EDEF /* CodableFund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865A9F21B2E32800F0EDEF /* CodableFund.swift */; };
 		59865AA321B2E8A200F0EDEF /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865AA221B2E8A200F0EDEF /* APIWorker.swift */; };
 		59865AAE21B2F79100F0EDEF /* FundFilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59865AAD21B2F79100F0EDEF /* FundFilterOptions.swift */; };
@@ -53,6 +59,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59056CB621B48D25002F56F1 /* FundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundTableViewController.swift; sourceTree = "<group>"; };
+		59056CB821B48D3C002F56F1 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		59056CBA21B48D51002F56F1 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		59056CBC21B56B7D002F56F1 /* FormattedFund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedFund.swift; sourceTree = "<group>"; };
+		59056CC021B59B6D002F56F1 /* FundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundTableViewCell.swift; sourceTree = "<group>"; };
+		593E905221B60BBA0057F8C9 /* PickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewController.swift; sourceTree = "<group>"; };
 		59865A9F21B2E32800F0EDEF /* CodableFund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFund.swift; sourceTree = "<group>"; };
 		59865AA221B2E8A200F0EDEF /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		59865AAD21B2F79100F0EDEF /* FundFilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundFilterOptions.swift; sourceTree = "<group>"; };
@@ -129,6 +141,8 @@
 			children = (
 				59865A9F21B2E32800F0EDEF /* CodableFund.swift */,
 				59865AAD21B2F79100F0EDEF /* FundFilterOptions.swift */,
+				59056CBC21B56B7D002F56F1 /* FormattedFund.swift */,
+				59056CC021B59B6D002F56F1 /* FundTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +159,7 @@
 		59865AA421B2EB7600F0EDEF /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				59056CBA21B48D51002F56F1 /* Interactor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -152,6 +167,7 @@
 		59865AA521B2EBB200F0EDEF /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				59056CB821B48D3C002F56F1 /* Presenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -159,6 +175,9 @@
 		59865AA621B2EBDB00F0EDEF /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				59056CB621B48D25002F56F1 /* FundTableViewController.swift */,
+				A279EF9C21B1667600E39E1F /* ViewController.swift */,
+				593E905221B60BBA0057F8C9 /* PickerTableViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -201,7 +220,6 @@
 				59865A9D21B2E2E600F0EDEF /* Scene */,
 				A279EFE321B1683F00E39E1F /* Colors.swift */,
 				A279EF9A21B1667600E39E1F /* AppDelegate.swift */,
-				A279EF9C21B1667600E39E1F /* ViewController.swift */,
 				A279EFA621B1667800E39E1F /* Info.plist */,
 			);
 			path = "Teste-iOS-BTG";
@@ -390,12 +408,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59056CB921B48D3C002F56F1 /* Presenter.swift in Sources */,
 				A279EF9D21B1667600E39E1F /* ViewController.swift in Sources */,
+				59056CC121B59B6D002F56F1 /* FundTableViewCell.swift in Sources */,
+				59056CBB21B48D51002F56F1 /* Interactor.swift in Sources */,
 				A279EFE421B1683F00E39E1F /* Colors.swift in Sources */,
 				59865AA021B2E32800F0EDEF /* CodableFund.swift in Sources */,
 				59865AAE21B2F79100F0EDEF /* FundFilterOptions.swift in Sources */,
+				59056CB721B48D25002F56F1 /* FundTableViewController.swift in Sources */,
+				59056CBD21B56B7D002F56F1 /* FormattedFund.swift in Sources */,
 				59865AB021B2FB6200F0EDEF /* FilterWorker.swift in Sources */,
 				A279EF9B21B1667600E39E1F /* AppDelegate.swift in Sources */,
+				593E905321B60BBA0057F8C9 /* PickerTableViewController.swift in Sources */,
 				59865AA321B2E8A200F0EDEF /* APIWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

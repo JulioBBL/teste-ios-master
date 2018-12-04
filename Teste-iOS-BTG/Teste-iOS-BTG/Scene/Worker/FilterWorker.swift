@@ -19,10 +19,10 @@ public class FilterWorker {
     func filterFunds(_ funds: [CodableFund], by filter: FundFilterOptions) -> [CodableFund] {
         var filteredFunds = funds
         
-        if let risk = filter.risk {
+        if !filter.risk.isEmpty {
             filteredFunds = filteredFunds.filter({ (fund) -> Bool in
                 guard let fundRisk = RiskLevel(rawValue: fund.riskName) else {return false}
-                return risk.contains(fundRisk)
+                return filter.risk.contains(fundRisk)
             })
         }
         
@@ -54,7 +54,7 @@ public class FilterWorker {
     ///   - text: text that must be present on the fund's name.
     /// - Returns: a CodableFund array comprised only of funds that have the specified text in the name.
     func filterFunds(_ funds: [CodableFund], byText text: String) -> [CodableFund] {
-        return funds.filter({ (fund) -> Bool in
+        return text == "" ? funds : funds.filter({ (fund) -> Bool in
             return fund.name.contains(text)
         })
     }

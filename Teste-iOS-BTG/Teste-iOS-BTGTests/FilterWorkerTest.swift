@@ -312,7 +312,11 @@ class FilterWorkerTest: XCTestCase {
     }
     
     func testFilterByText() {
-        var filtered = self.worker.filterFunds(self.funds, byText: "a")
+        var filtered = self.worker.filterFunds(self.funds, byText: "")
+        
+        XCTAssertEqual(filtered.count, 6)
+        
+        filtered = self.worker.filterFunds(self.funds, byText: "a")
         
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered[0].id, 1)

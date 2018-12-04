@@ -14,11 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        APIWorker().getFunds { (funds) in
-            print("amount:",funds.count,"\nfirst:",funds.first)
-        }
-        
         // Override point for customization after application launch.
         return true
     }

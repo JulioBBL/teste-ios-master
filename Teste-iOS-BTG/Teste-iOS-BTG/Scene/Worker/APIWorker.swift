@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum responseType<T> {
+enum ResponseType<T> {
     case result(_ value: T)
     case error(description: String?)
 }
@@ -16,7 +16,7 @@ enum responseType<T> {
 public class APIWorker {
     let endpoint = "https://www.btgpactualdigital.com/services/public/funds/"
     
-    private func makeRequest<T: Decodable>(toURL url: String, expecting t: T.Type, completion: @escaping (responseType<T>) -> Void) {
+    private func makeRequest<T: Decodable>(toURL url: String, expecting t: T.Type, completion: @escaping (ResponseType<T>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.error(description: "provided invalid URL"))
             return
@@ -51,14 +51,7 @@ public class APIWorker {
         task.resume()
     }
     
-    func getFunds(_ block: @escaping ([CodableFund]) -> Void) {
-        self.makeRequest(toURL: self.endpoint, expecting: [CodableFund].self) { [weak self](response) in
-            switch response {
-            case .result(let funds):
-                block(funds)
-            case .error(let description):
-                fatalError("API error: \(String(describing: description))")
-            }
-        }
+    func getFunds(_ block: @escaping (ResponseType<[CodableFund]>) -> Void) {
+        self.makeRequest(toURL: self.endpoint, expecting: [CodableFund].self, completion: block)
     }
 }

@@ -14,14 +14,14 @@ enum RiskLevel: String {
     case sofisticado = "SOFISTICADO"
 }
 
-enum FundCategory: String {
+enum FundCategory: String, CaseIterable {
     case rendaFixa     = "Renda Fixa"
     case multimercados = "Multimercados"
     case acoes         = "Ações"
     case cambial       = "Cambial"
 }
 
-enum ApplicationInterval: Double {
+enum ApplicationInterval: Double, CaseIterable {
     case upto0    =       0.0
     case upto100  =     100.0
     case upto500  =     500.0
@@ -38,7 +38,7 @@ enum ApplicationInterval: Double {
     case upto250k = 250_000.0
 }
 
-enum RescueInterval: String {
+enum RescueInterval: String, CaseIterable {
     case interval0 = "D+0"
     case interval1 = "D+1"
     case interval2 = "D+2"
@@ -71,9 +71,23 @@ enum RescueInterval: String {
     case interval29 = "D+181"
 }
 
-struct FundFilterOptions {
-    var risk: [RiskLevel]?
+class FundFilterOptions {
+    var risk: [RiskLevel]
     var category: FundCategory?
     var minimumApplication: ApplicationInterval?
     var rescueInterval: RescueInterval?
+    
+    init() {
+        self.risk = []
+        self.category = nil
+        self.minimumApplication = nil
+        self.rescueInterval = nil
+    }
+    
+    init(risk: [RiskLevel]?, category: FundCategory?, minimumApplication: ApplicationInterval?, rescueInterval: RescueInterval?) {
+        self.risk = risk ?? []
+        self.category = category
+        self.minimumApplication = minimumApplication
+        self.rescueInterval = rescueInterval
+    }
 }
