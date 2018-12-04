@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     private var options = [String]()
     private var pickerTitle: String = ""
     private var optionPrefix: String = ""
+    private var option: String = ""
     
     public var filterOptions: FundFilterOptions?
     
@@ -82,6 +83,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.optionPrefix = ""
+        self.option = ""
         
         self.risk = self.filterOptions?.risk ?? []
         self.category = self.filterOptions?.category
@@ -118,6 +120,7 @@ class ViewController: UIViewController {
         }
         
         self.options = FundCategory.allCases.map({ $0.rawValue })
+        self.option = self.category?.rawValue ?? "Todos(as)"
         self.pickerTitle = "CATEGORIA"
         
         performSegue(withIdentifier: "toPicker", sender: nil)
@@ -125,7 +128,11 @@ class ViewController: UIViewController {
     
     @IBAction func clickedMinimumApplication(_ sender: UIButton) {
         self.action = { [weak self](selection) in
-            guard let self = self, let selection = selection, let value = FormattedFund.formatted(money: selection) else { return }
+            guard let self = self else { return }
+            guard let selection = selection, let value = FormattedFund.formatted(money: selection) else {
+                self.minimumApplication = nil
+                return
+            }
             
             if let value = ApplicationInterval(rawValue: value) {
                 self.minimumApplication = value
@@ -136,6 +143,7 @@ class ViewController: UIViewController {
         
         self.options = ApplicationInterval.allCases.map({ FormattedFund.formatted(money: $0.rawValue) })
         self.optionPrefix = "até R$ "
+        self.option = FormattedFund.formatted(money: self.minimumApplication?.rawValue ?? -1.0)
         self.pickerTitle = "APLICAÇÃO MÍNIMA"
         
         performSegue(withIdentifier: "toPicker", sender: nil)
@@ -153,6 +161,7 @@ class ViewController: UIViewController {
         }
         
         self.options = RescueInterval.allCases.map({ $0.rawValue })
+        self.option = self.rescueInterval?.rawValue ?? "Todos(as)"
         self.pickerTitle = "RESGATE EM"
         
         performSegue(withIdentifier: "toPicker", sender: nil)
@@ -186,6 +195,7 @@ class ViewController: UIViewController {
         if segue.identifier == "toPicker", let destination = segue.destination as? PickerTableViewController {
             destination.completionAction = self.action
             destination.options = self.options
+            destination.selectedOption = self.option
             destination.title = self.pickerTitle
             destination.optionPrefix = self.optionPrefix
         }
