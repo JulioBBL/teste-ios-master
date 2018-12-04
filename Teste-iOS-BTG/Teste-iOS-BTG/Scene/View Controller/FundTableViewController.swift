@@ -14,18 +14,26 @@ class FundTableViewController: UITableViewController, UISearchBarDelegate {
     var funds = [FormattedFund]() {
         didSet {
             DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             }
         }
     }
-    
     var interactor: Interactor
     
     var filter = FundFilterOptions()
     
     public var errorMessage: String? {
         didSet {
-            print(errorMessage)
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+            }
+            
+            let alert = UIAlertController(title: "Ocorreu um erro", message: errorMessage ?? "Não foi possível realizar a ação", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true)
         }
     }
     
@@ -41,13 +49,23 @@ class FundTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         self.tableView.separatorStyle = .none
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(refreshData), for: .valueChanged)
+        self.refreshControl = refreshControl
+        
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        interactor.fetchFunds(filteredBy: self.filter)
+        self.refreshData()
+    }
+    
+    // MARK - Custom methods
+    
+    @objc func refreshData() {
+        self.interactor.fetchFunds(filteredBy: self.filter)
     }
     
     // MARK - Search bar delegate

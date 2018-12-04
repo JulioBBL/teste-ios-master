@@ -58,7 +58,7 @@ public class FormattedFund {
     }
     
     public static func formatted(date: String) -> String {
-        return (date.split(separator: "T").first ?? "").replacingOccurrences(of: "-", with: "/")
+        return (date.split(separator: "T").first ?? "").split(separator: "-").reversed().joined(separator: "/")
     }
     
     init(from codableFund: CodableFund) {

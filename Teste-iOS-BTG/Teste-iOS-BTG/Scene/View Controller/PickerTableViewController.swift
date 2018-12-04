@@ -19,16 +19,6 @@ class PickerTableViewController: UITableViewController {
     public var optionPrefix: String = ""
     
     public var completionAction: (String?) -> Void = {_ in}
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
     
     @IBAction func cancel(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

@@ -90,6 +90,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func exitFilterScreen(_ sender: Any) {
+        self.cleanFilter(sender)
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -98,12 +100,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cleanFilter(_ sender: Any) {
-        self.filterOptions?.risk = []
-        self.filterOptions?.category = nil
-        self.filterOptions?.minimumApplication = nil
-        self.filterOptions?.rescueInterval = nil
-        
-        self.navigationController?.popViewController(animated: true)
+        self.risk = []
+        self.category = nil
+        self.minimumApplication = nil
+        self.rescueInterval = nil
     }
     
     @IBAction func clickedCategoria(_ sender: UIButton) {
